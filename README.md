@@ -9,11 +9,11 @@ This repository contains a Python-based solution for detecting anomalous behavio
 
 # Usage
 ## For Anomaly table
-'''
+```
 python flask_display.py
-'''
+```
 
 ## For visualization
-'''
+```
 python siem_dashboard.py
-'''
+```
