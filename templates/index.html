@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Detection Results</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .high-anomaly {
+            background-color: #f8d7da; /* Light red */
+            color: #721c24;  /* Dark red text */
+        }
+        .normal {
+            background-color: #d4edda; /* Light green */
+            color: #155724;  /* Dark green text */
+        }
+    </style>
+</head>
+<body>
+    <h1>Anomaly Detection Results</h1>
+    <table>
+        <thead>
+            <tr >
+                <tr>
+                <th>Timestamp</th>
+                <th>Source</th>
+                <th>Status</th>
+                <th>Size</th>
+                <th>User Agent</th>
+                <th>Anomaly</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data.itertuples() %}
+            <tr class="{% if row.anomaly == -1 %}high-anomaly{% else %}normal{% endif %}">
+                <td>{{ row.timestamp }}</td>
+                <td>{{ row.source }}</td>
+                <td>{{ row.status }}</td>
+                <td>{{ row.size }}</td>
+                <td>{{ row.user_agent }}</td>
+                <td>{{ row.anomaly }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
